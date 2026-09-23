@@ -1,3 +1,9 @@
+Name-Krish Choudhary
+Roll no / Sec - 25th / 3C
+Uni Roll-2415500243
+
+
+
 # CSS and HTML Practice
 
 This repo has the HTML and CSS files I made while learning and practicing different concepts.
