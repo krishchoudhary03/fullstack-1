@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: black;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Main heading */
+        .heading {
+            color: white;
+            font-size: 50px;
+            font-weight: 900;
+            margin: 0;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        /* Racer card */
+        .box {
+            width: 500px;
+            margin: 150px auto;
+            position: sticky;
+            top: 50px;
+            background: black;
+            border-radius: 15px;
+        }
+
+        .box img {
+            width: 100%;
+            height: 250px;
+            display: block;
+            
+            border-radius: 15px;
+        }
+
+        /* Driver names */
+        .name {
+            color: white;
+            font-size: 30px;
+            font-weight: 900;
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        /* Different stacking order */
+        #box1 {
+            z-index: 1;
+        }
+
+        #box2 {
+            z-index: 2;
+        }
+
+        #box3 {
+            z-index: 3;
+        }
+
+        #box4 {
+            z-index: 4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="heading">India</h1>
+
+    <div class="box" id="box1">
+        <img src="C:\Users\ASUS\Downloads\mumbai.jpg" alt="Mumbai">
+        <p class="name left">Mumbai</p>
+    </div>
+
+    <div class="box" id="box2">
+        <img src="C:\Users\ASUS\Downloads\delhi.jpg" alt="Delhi">
+        <p class="name right">Delhi</p>
+    </div>
+
+    <div class="box" id="box3">
+        <img src="C:\Users\ASUS\OneDrive\Desktop\punjab.jpg" alt="Punjab">
+        <p class="name left">Punjab</p>
+    </div>
+
+    <div class="box" id="box4">
+        <img src="C:\Users\ASUS\Downloads\kerala.jpg" alt="kerala">
+        <p class = "name right" >Kerala</p>
+    </div>
+
+</body>
+</html>

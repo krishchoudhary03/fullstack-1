@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Page</title>
+</head>
+<body>
+    <style>
+        
+        
+        html, body{   
+            background-color:  hsla(127, 15%, 24%, 0.712);   
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+
+        }
+        h1 {
+            color:#165A54 ;
+            text-align: center;
+            background-color: #9cf84b;
+        }
+        img{
+            display: block;
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px auto;
+            height: auto;
+            border-radius: 16px;
+            color: #0b3c2e;
+            image-resolution: 300dpi;
+        }
+
+        .image-card{
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .image-card img{
+            margin: 0;
+            width: 100%;
+            max-width: none;
+            display: block;
+            border-radius: 0;
+        }
+
+        .image-card .overlay{
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            text-align: center;
+        }
+
+        .image-card .overlay span{
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        img2{ 
+            display: block;
+            margin: 20px auto;  
+
+        }
+        p{
+            font-weight: bold;
+            color:  #91DA7C;
+            text-align: center;
+            
+            font-size: 18px;
+        }
+        p1{
+            font-style: italic;
+            color: #9dc7ba;
+            
+            text-align: center;
+            
+            font-size: 18px;
+        }
+        h2{
+            color: #81eac9;
+            text-align: center;
+            background-color: #3782ab;
+        }
+       
+    </style>
+    <h1>Welcome to My Web Page</h1>
+
+    <p>This is a simple paragraph.</p>
+    <img src="https://picsum.photos/1200/700" alt="Blurred outdoor scene with sunlit trees and a walking path, warm and peaceful mood, no legible text">
+    <p1>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.</p1>
+    <div class="image-card">
+        <img src="https://picsum.photos/seed/picsum/1200/700" alt="Another blurred outdoor scene">
+        <div class="overlay">
+            <span>Paragraph 2</span>
+        </div>
+    </div>
+    <h2>One of nature’s most awe-inspiring phenomena, the Northern Lights, or aurora borealis, paints the sky with vibrant blues and greens. The dancing lights against a dark backdrop create a magical atmosphere.
+
+</h2>
+</body>
+</html>

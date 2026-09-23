@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(
+                135deg,
+                #020617 0%,
+                #0b1f3a 30%,
+                #0f4c81 65%,
+                #2563eb 100%
+            );
+            background-attachment: fixed;
+            width: max-content;
+            min-height: 100vh;
+        }
+
+         .heading {
+            color: white;
+            font-size: 50px;
+            font-weight: 900;
+            margin: 0;
+            padding: 100px 0;
+            text-align: center;
+            width: 100vw;
+        }
+
+         .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 300px;
+            padding: 150px 50px;
+            width: max-content;
+        }
+
+         .box {
+            width: 500px;
+            flex-shrink: 0;
+            position: sticky;
+            left: 50px;
+            background: transparent;
+            border-radius: 15px;
+        }
+
+        .box img {
+            width: 500px;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            border-radius: 15px;
+        }
+
+         .name {
+            color: white;
+            font-size: 30px;
+            font-weight: 900;
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+         #box1 {
+            z-index: 1;
+        }
+
+        #box2 {
+            z-index: 2;
+        }
+
+        #box3 {
+            z-index: 3;
+        }
+
+        #box4 {
+            z-index: 4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="heading">India</h1>
+
+    <div class="container">
+
+         <div class="box" id="box1">
+            <img src="C:\Users\ASUS\Downloads\mumbai.jpg" alt="Mumbai">
+            <p class="name left">Mumbai</p>
+        </div>
+
+        
+        <div class="box" id="box2">
+            <img src="C:\Users\ASUS\Downloads\delhi.jpg" alt="Delhi">
+            <p class="name right">Delhi</p>
+        </div>
+
+     
+        <div class="box" id="box3">
+            <img src="C:\Users\ASUS\OneDrive\Desktop\punjab.jpg" alt="Punjab">
+            <p class="name left">Punjab</p>
+        </div>
+
+         <div class="box" id="box4">
+            <img src="C:\Users\ASUS\Downloads\kerala.jpg" alt="Kerala">
+            <p class="name right">Kerala</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

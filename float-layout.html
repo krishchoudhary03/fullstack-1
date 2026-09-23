@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Float Layout Basics</title>
+<style>
+    * { box-sizing: border-box; }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background: #fafafa;
+    }
+    h1 { text-align: center; color: #22313f; }
+
+    /* clearfix so parent doesn't collapse when children float */
+    .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .float-demo {
+        border: 2px dashed #999;
+        padding: 15px;
+        margin-bottom: 40px;
+    }
+
+    .float-demo img {
+        float: left;
+        width: 160px;
+        border-radius: 10px;
+        margin: 0 20px 10px 0;
+    }
+
+    .float-demo p {
+        line-height: 1.6;
+        color: #333;
+    }
+
+    .columns {
+        background: #eef2f5;
+    }
+
+    .col {
+        float: left;
+        width: 33.33%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .col:nth-child(1) { background: #ffd6d6; }
+    .col:nth-child(2) { background: #d6ffe0; }
+    .col:nth-child(3) { background: #d6e6ff; }
+</style>
+</head>
+<body>
+
+    <h1>CSS Float</h1>
+
+    <h2>1. Text wrap around a floated image</h2>
+    <div class="float-demo clearfix">
+        <img src="https://picsum.photos/200/200?random=1" alt="sample">
+        <p>
+            When an element is floated, it is taken out of normal flow and pushed
+            to one side, letting inline content (like this paragraph) wrap around it.
+            Without the clearfix on the parent, a container holding only floated
+            children would collapse to zero height because floats don't
+            contribute to the parent's height by default.
+        </p>
+    </div>
+
+    <h2>2. Old-school 3 column layout using float</h2>
+    <div class="columns clearfix">
+        <div class="col">Column 1</div>
+        <div class="col">Column 2</div>
+        <div class="col">Column 3</div>
+    </div>
+
+</body>
+</html>

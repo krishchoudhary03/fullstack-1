@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radial & Conic Gradients</title>
+<style>
+    * { box-sizing: border-box; }
+    body {
+        font-family: Arial, sans-serif;
+        background: #111;
+        color: white;
+        text-align: center;
+        padding: 40px;
+    }
+
+    .row {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 30px;
+    }
+
+    .box {
+        width: 220px;
+        height: 220px;
+        border-radius: 16px;
+    }
+
+    .radial-spotlight {
+        background: radial-gradient(circle at 30% 30%, #ffffff, #ff6b6b 40%, #2d0000 100%);
+    }
+
+    .radial-rings {
+        background: repeating-radial-gradient(circle, #74b9ff, #74b9ff 15px, #0984e3 15px, #0984e3 30px);
+    }
+
+    .conic-pie {
+        background: conic-gradient(
+            #e74c3c 0deg 90deg,
+            #f1c40f 90deg 180deg,
+            #2ecc71 180deg 270deg,
+            #3498db 270deg 360deg
+        );
+        border-radius: 50%;
+    }
+
+    .conic-wheel {
+        background: conic-gradient(from 0deg, red, yellow, lime, cyan, blue, magenta, red);
+        border-radius: 50%;
+    }
+
+    p.label { margin-top: 10px; color: #ccc; }
+</style>
+</head>
+<body>
+
+    <h1>radial-gradient() vs conic-gradient()</h1>
+
+    <div class="row">
+        <div>
+            <div class="box radial-spotlight"></div>
+            <p class="label">radial-gradient (spotlight)</p>
+        </div>
+        <div>
+            <div class="box radial-rings"></div>
+            <p class="label">repeating-radial-gradient (rings)</p>
+        </div>
+        <div>
+            <div class="box conic-pie"></div>
+            <p class="label">conic-gradient (pie chart)</p>
+        </div>
+        <div>
+            <div class="box conic-wheel"></div>
+            <p class="label">conic-gradient (color wheel)</p>
+        </div>
+    </div>
+
+</body>
+</html>
