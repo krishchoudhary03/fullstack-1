@@ -4,10 +4,6 @@ This repo has the HTML and CSS files I made while learning and practicing differ
 
 Most of the files are small exercises, so they can be opened directly in a browser without installing anything.
 
-## Folders
-
-- `mine/` - Files I made during class and while practicing on my own
-- `new_topics/` - Extra CSS topics I tried separately
 
 ## What I practiced
 
