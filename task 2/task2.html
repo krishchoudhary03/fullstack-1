@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northstar Goods | Product Catalogue</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="#top" aria-label="Northstar Goods home">
+                <span class="brand-mark">N</span>
+                <span>northstar<span class="brand-accent">.</span></span>
+            </a>
+            <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+                <a class="active" href="#catalogue">Shop</a>
+                <a href="#new-arrivals">New arrivals</a>
+                <a href="#collections">Collections</a>
+                <a href="#about">About</a>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-button" aria-label="Search products">Search</button>
+                <button class="icon-button account-button" aria-label="Open account">Account</button>
+                <button class="cart-button" aria-label="Shopping cart">Cart <span class="cart-count">0</span></button>
+                <button class="menu-button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav">Menu</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+        <section class="catalogue-hero" id="catalogue">
+            <div>
+                <p class="eyebrow">The everyday edit</p>
+                <h1>Good things,<br><em>well chosen.</em></h1>
+            </div>
+            <p class="hero-note">Thoughtful objects for slower mornings,<br>better workdays, and everywhere in between.</p>
+        </section>
+
+        <div class="catalogue-layout">
+            <aside class="filters" aria-label="Product filters">
+                <div class="filter-heading">
+                    <h2>Filter by</h2>
+                    <button class="clear-button" type="button">Clear all</button>
+                </div>
+                <details open>
+                    <summary>Category <span>+</span></summary>
+                    <label><input type="checkbox" checked> All products <small>24</small></label>
+                    <label><input type="checkbox"> Home <small>08</small></label>
+                    <label><input type="checkbox"> Carry <small>06</small></label>
+                    <label><input type="checkbox"> Desk <small>05</small></label>
+                    <label><input type="checkbox"> Apparel <small>05</small></label>
+                </details>
+                <details open>
+                    <summary>Price <span>+</span></summary>
+                    <label><input type="checkbox"> Under $50</label>
+                    <label><input type="checkbox"> $50 - $100</label>
+                    <label><input type="checkbox"> Over $100</label>
+                </details>
+                <details open>
+                    <summary>Colour <span>+</span></summary>
+                    <div class="colour-options" aria-label="Filter by colour">
+                        <button class="swatch swatch-sand" aria-label="Sand"></button>
+                        <button class="swatch swatch-ink" aria-label="Ink"></button>
+                        <button class="swatch swatch-sage" aria-label="Sage"></button>
+                        <button class="swatch swatch-clay" aria-label="Clay"></button>
+                        <button class="swatch swatch-ivory" aria-label="Ivory"></button>
+                    </div>
+                </details>
+                <div class="filter-promo">
+                    <span>New season</span>
+                    <strong>Made to last.</strong>
+                    <a href="#new-arrivals">Explore the edit <span>-></span></a>
+                </div>
+            </aside>
+
+            <section class="product-area" aria-label="Product catalogue">
+                <div class="catalogue-toolbar">
+                    <p><strong>All products</strong> <span>24 pieces</span></p>
+                    <label class="sort-control">Sort by
+                        <select aria-label="Sort products">
+                            <option>Featured</option>
+                            <option>Price: low to high</option>
+                            <option>Price: high to low</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="product-grid">
+                    <article class="product-card">
+                        <div class="product-image image-lamp"><span class="badge">New</span><img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=85" alt="Warm brass desk lamp"></div>
+                        <div class="product-info">
+                            <p class="category">Home / Lighting</p><h2>Arco Desk Lamp</h2>
+                            <div class="rating" aria-label="4.9 out of 5 stars"><span>★★★★★</span> <small>4.9 (38)</small></div>
+                            <div class="price-row"><strong>$84</strong><del>$110</del><span class="sale-label">Sale</span></div>
+                            <button class="add-button" type="button">Add to cart <span>+</span></button>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image image-bag"><img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=85" alt="Structured black everyday backpack"></div>
+                        <div class="product-info">
+                            <p class="category">Carry / Everyday</p><h2>Field Day Pack</h2>
+                            <div class="rating" aria-label="4.8 out of 5 stars"><span>★★★★★</span> <small>4.8 (24)</small></div>
+                            <div class="price-row"><strong>$128</strong></div>
+                            <button class="add-button" type="button">Add to cart <span>+</span></button>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image image-chair"><span class="badge">Bestseller</span><img src="https://images.unsplash.com/photo-1549497538-303791108f95?auto=format&fit=crop&w=700&q=85" alt="Minimal green lounge chair"></div>
+                        <div class="product-info">
+                            <p class="category">Home / Furniture</p><h2>Form Lounge Chair</h2>
+                            <div class="rating" aria-label="5 out of 5 stars"><span>★★★★★</span> <small>5.0 (17)</small></div>
+                            <div class="price-row"><strong>$249</strong><del>$299</del><span class="sale-label">Sale</span></div>
+                            <button class="add-button" type="button">Add to cart <span>+</span></button>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image image-mug"><img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=700&q=85" alt="Handmade ceramic coffee mug"></div>
+                        <div class="product-info">
+                            <p class="category">Home / Kitchen</p><h2>Daily Ceramic Mug</h2>
+                            <div class="rating" aria-label="4.7 out of 5 stars"><span>★★★★★</span> <small>4.7 (52)</small></div>
+                            <div class="price-row"><strong>$32</strong></div>
+                            <button class="add-button" type="button">Add to cart <span>+</span></button>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image image-watch"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85" alt="Classic black wristwatch"></div>
+                        <div class="product-info">
+                            <p class="category">Accessories / Time</p><h2>Everyday Watch</h2>
+                            <div class="rating" aria-label="4.8 out of 5 stars"><span>★★★★★</span> <small>4.8 (19)</small></div>
+                            <div class="price-row"><strong>$149</strong></div>
+                            <button class="add-button" type="button">Add to cart <span>+</span></button>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image image-notebook"><span class="badge">New</span><img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=700&q=85" alt="Open linen notebook and pencil"></div>
+                        <div class="product-info">
+                            <p class="category">Desk / Stationery</p><h2>Linen Journal</h2>
+                            <div class="rating" aria-label="4.9 out of 5 stars"><span>★★★★★</span> <small>4.9 (31)</small></div>
+                            <div class="price-row"><strong>$28</strong></div>
+                            <button class="add-button" type="button">Add to cart <span>+</span></button>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image image-bottle"><img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=700&q=85" alt="Reusable stainless steel bottle"></div>
+                        <div class="product-info">
+                            <p class="category">Carry / Essentials</p><h2>Daily Water Bottle</h2>
+                            <div class="rating" aria-label="4.6 out of 5 stars"><span>★★★★★</span> <small>4.6 (43)</small></div>
+                            <div class="price-row"><strong>$44</strong><del>$54</del><span class="sale-label">Sale</span></div>
+                            <button class="add-button" type="button">Add to cart <span>+</span></button>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image image-candle"><img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=700&q=85" alt="Amber scented candle"></div>
+                        <div class="product-info">
+                            <p class="category">Home / Fragrance</p><h2>Quiet Hour Candle</h2>
+                            <div class="rating" aria-label="4.9 out of 5 stars"><span>★★★★★</span> <small>4.9 (27)</small></div>
+                            <div class="price-row"><strong>$36</strong></div>
+                            <button class="add-button" type="button">Add to cart <span>+</span></button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer class="site-footer"><span>northstar<span class="brand-accent">.</span></span><span>Objects for a considered life.</span></footer>
+</body>
+</html>

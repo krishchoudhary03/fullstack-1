@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+
+    .dashboard {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 240px;
+      background: #111827;
+      color: #fff;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar h2 {
+      font-size: 24px;
+    }
+
+    .sidebar a {
+      color: #d1d5db;
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 8px;
+    }
+
+    .sidebar a:hover {
+      background: #1f2937;
+      color: #fff;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      background: #fff;
+      padding: 20px 28px;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .content {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      flex: 1;
+      min-width: 200px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .panel {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      min-height: 300px;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      Sidebar
+    </div>
+    <div class="content">
+        <div class="navbar">navbar</div>
+          <div class="cards">
+            <div class="card">1</div>
+            <div class="card">2</div>
+            </div> 
+            <table>
+              <thead>
+                <tr>
+                  <th>Header 1</th>
+                  <th>Header 2</th>
+                  <th>Header 3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data 1</td>
+                  <td>Data 2</td>
+                  <td>Data 3</td>
+                </tr>
+                <tr>
+                  <td>Data 4</td>
+                  <td>Data 5</td>
+                  <td>Data 6</td>
+                </tr>
+              </tbody>    
+        </div>
+
+        <div class="panel">
+          <h3>Main Content Area</h3>
+          <p>This section can hold charts, tables, or activity feeds.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

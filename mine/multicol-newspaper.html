@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newspaper Multi-Column Layout</title>
+<style>
+    body {
+        font-family: Georgia, serif;
+        background: #fdfdf7;
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+        color: #222;
+    }
+
+    header {
+        text-align: center;
+        border-bottom: 4px solid #222;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+    }
+
+    header h1 {
+        font-size: 46px;
+        letter-spacing: 2px;
+        margin: 0;
+    }
+
+    header p {
+        margin: 4px 0 0;
+        font-style: italic;
+        color: #666;
+    }
+
+    .article {
+        column-count: 3;
+        column-gap: 30px;
+        column-rule: 1px solid #ccc;
+        text-align: justify;
+        line-height: 1.6;
+    }
+
+    .article p::first-letter {
+        font-size: 46px;
+        font-weight: bold;
+        float: left;
+        line-height: 40px;
+        padding-right: 6px;
+        color: #b71c1c;
+    }
+
+    .article h2 {
+        column-span: all;
+        text-align: center;
+        border-top: 2px solid #222;
+        border-bottom: 2px solid #222;
+        padding: 6px 0;
+        margin-bottom: 15px;
+    }
+</style>
+</head>
+<body>
+
+    <header>
+        <h1>THE DAILY CODE</h1>
+        <p>Front Page — CSS Edition</p>
+    </header>
+
+    <div class="article">
+        <h2>Multi-Column Layout Makes a Comeback</h2>
+        <p>
+            Once reserved for print, the newspaper-style column layout is
+            now trivial on the web thanks to the column-count and column-gap
+            properties. A single block of text automatically flows from one
+            column into the next, exactly like a printed page, without any
+            extra markup or wrapper divs for each column.
+        </p>
+        <p>
+            column-rule draws a thin line between columns, and combining
+            first-letter with float recreates the classic drop-cap look
+            editors have used for centuries. column-span: all lets a
+            heading break out and stretch across every column at once,
+            which is useful for section titles inside a long article.
+        </p>
+        <p>
+            Together these properties turn a plain paragraph of text into
+            something that instantly reads like a newspaper page, with
+            zero JavaScript involved.
+        </p>
+    </div>
+
+</body>
+</html>

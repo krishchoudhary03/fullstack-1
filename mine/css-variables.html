@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Custom Properties (Variables)</title>
+<style>
+    :root {
+        --primary: #6c5ce7;
+        --secondary: #00cec9;
+        --danger: #d63031;
+        --radius: 12px;
+        --gap: 16px;
+        --font-main: Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        font-family: var(--font-main);
+        margin: 0;
+        padding: 40px;
+        background: #f5f6fa;
+    }
+
+    h1 { text-align: center; color: var(--primary); }
+
+    .row {
+        display: flex;
+        gap: var(--gap);
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 30px;
+    }
+
+    .btn {
+        border: none;
+        padding: 14px 26px;
+        border-radius: var(--radius);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .btn-primary { background: var(--primary); }
+    .btn-secondary { background: var(--secondary); }
+    .btn-danger { background: var(--danger); }
+
+    /* variables can be overridden inside a scope */
+    .dark-card {
+        --primary: #a29bfe;
+        background: #2d3436;
+        color: white;
+        padding: 30px;
+        border-radius: var(--radius);
+        margin: 40px auto 0;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    .dark-card .btn-primary { background: var(--primary); }
+</style>
+</head>
+<body>
+
+    <h1>Custom Properties Demo</h1>
+    <p style="text-align:center;">
+        Variables are defined once on <code>:root</code> and reused with
+        <code>var(--name)</code> everywhere below.
+    </p>
+
+    <div class="row">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-danger">Danger</button>
+    </div>
+
+    <div class="dark-card">
+        <p>This card redefines <code>--primary</code> locally, so the same
+        class name renders a different color here.</p>
+        <button class="btn btn-primary">Themed Button</button>
+    </div>
+
+</body>
+</html>

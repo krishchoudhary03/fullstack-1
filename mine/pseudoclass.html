@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document (26-08-2026)</title>
+  <style>
+
+    body{
+     background-color: lightpink;
+     }
+
+    button{
+      width: 80px;
+      height:  40px;
+      font-size: 10px;
+      background-color: white;
+    }
+    button:hover{
+      color:white;
+      background-color: black;
+    }
+    button:active{
+      background-color: grey;
+    }
+    button:focus{
+      background-color: whitesmoke;
+    }
+    input[type="checkbox"]{
+      width: 20px;
+      height: 20px;
+    }
+    input[type="checkbox"]:checked{
+      box-shadow: 3px 3px 3px 3px black;
+      accent-color: red;
+
+    }
+    a{
+      font-size: 40px;
+      
+    }
+    a:link{
+      color: black;
+      text-decoration: none;
+    }
+    a:visited{
+      color: purple;
+    }
+    a:hover{
+      color: red;
+    }
+    a:active{
+      color: blue;
+    }
+
+
+
+    /* form input pseudo classes
+    :checked
+    :disabled
+    :enabled
+    :required
+    :optional
+    :valid
+    :invalid
+    :read-only
+    :read-write
+    :placeholder-shown
+    :in-range
+    :out-of-range
+     */
+
+     /*universal selector
+     class 
+     id
+     attribute
+     combinatiors
+     pseudo class
+     pseudo elements
+     */
+
+     input:required{
+      border-width: 0px 0px 1px 0px black;
+      border-color: red;
+      font-size: 20px;
+
+     }
+
+     input:enabled{
+      border-width: 0px 0px 1px 0px black;
+
+     }
+     input:read-write{
+      background-color: lightblue;
+     }
+     input:disabled{
+      color:grey;
+      border-width: 0px ;
+      background-color: lightgrey;
+     }
+     input:invalid{
+      border-width: 0px 0px 1px 0px black;
+      border-color: red;
+     }
+     h1{
+      background-color: lightgreen;
+      text-align: center;
+
+     }
+
+     container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     }
+     .container>div{
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+      margin: 10px;
+        
+     }
+     #box1{
+      flex-basis: 100px;
+      background-color: lightgreen;
+      flex-grow: 2;
+      flex-shrink: 2;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+     }
+     box2{
+      flex-basis: 100px;
+      background-color: lightcoral;
+     }
+     box3{
+      flex-basis: 100px;
+      background-color: lightyellow;
+     }
+     #whitesmoke{
+      background-color: whitesmoke;
+     }
+
+     
+
+
+
+
+
+    </style>
+
+
+
+
+
+</head>
+<body>
+
+  <div class="container">
+  <div id="box1">b1</div>
+  <div id="box2">b2</div>
+  <div id="box3">b3</div>
+</div>
+  <button type="button">Click me</button>
+  <a href="https://www.google.com" target="_blank">Google</a>
+  
+  
+  <input type="checkbox" name="checkbox" id="checkbox">
+  <h1>heading</h1>
+  <form>
+    <input type="text" value="Mr."/>
+    <input type="text" name="name" id="name" placeholder="Enter your name" required/>
+    <input type="number" value="20" disabled/>
+    <input type="text" name="email" placeholder="Enter your email" required/>
+    <input type="number" min="18" max="60" placeholder="number"invalid/>
+  </form>
+
+</body>
+</html>
