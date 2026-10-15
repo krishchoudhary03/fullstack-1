@@ -1,12 +1,19 @@
-var arr = [];
-function myfun(){
-    var val1 = document.getElementById("val1").value;
-    var val2 = document.getElementById("val2").value;
-  
-   let obj = {
-    name: val1,
-    rating: val2
-   };
-   arr.push(obj);
-   console.log(arr);
+var n=153,order=0,rem=0;
+var sum=0;
+var temp=n;
+while(temp!=0){
+    order+=1;
+    temp=Number.parseInt(temp/10);
 }
+temp=n;
+
+while(temp>0){
+    rem=temp%10;
+    let res = 1;
+    for(let i=0;i<order;i++){
+        res*=rem;
+    }
+    sum+=res;
+    temp=Number.parseInt(temp/10);
+}
+console.log(sum);
