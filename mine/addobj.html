@@ -1,0 +1,23 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Add Object</title>
+</head> 
+<body>
+    <input type="text" id="var1">
+    <input type="text" id="var2">
+    <button onclick="addObj()">Submit</button>
+
+        <script>
+            var obj={};
+            function addObj(){
+                var key=document.getElementById("var1").value;
+                var value=document.getElementById("var2").value;
+                obj[key]=value;
+                console.log(obj);
+            }
+
+    </script>
+
+</body>
+</html>
