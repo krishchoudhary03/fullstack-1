@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Methods</title>
+</head>
+<body>
+
+    <h1>JavaScript Practice</h1>
+
+    <script>
+        
+        let arr = [1, 2, 3, 4, 5];
+        console.log(arr);
+
+        
+        let newArr = arr.map(n => n * n);
+        console.log(newArr);
+
+        
+        let filteredArr = arr.filter(n => n % 2 === 0);
+        console.log(filteredArr);
+
+        
+        let foundArr = arr.find(n => n > 3);
+        console.log(foundArr);
+
+
+        
+        arr = [1, 2, 3, 4, 5];
+        console.log(arr); 
+
+        
+        arr.push(6);
+        console.log(arr); 
+
+        
+        arr.unshift(0);
+        console.log(arr); 
+
+       
+        arr.shift();
+        console.log(arr); 
+
+       
+        arr.pop();
+        console.log(arr); 
+
+       
+        arr.foo = "hello";
+        console.log(arr);
+        console.log(arr.foo); 
+
+       
+        console.log(arr.indexOf(5)); 
+
+
+        
+        let price = 100;
+        let quantity;
+
+        quantity ??= 1;
+
+        let total = price * quantity;
+        console.log(total); 
+
+
+       
+        let obj = {
+            name: "Abhay",
+            location: {
+                city: "Mathura"
+            }
+        };
+
+        console.log(obj);
+        console.log(obj.name);
+        console.log(obj.location.city); 
+    </script>
+
+</body>
+</html>
