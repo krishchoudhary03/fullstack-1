@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Six Ball Cricket</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: system-ui, sans-serif;
+      background: #101927;
+      color: #f8fafc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: radial-gradient(circle at top, #1d4d47, #101927 65%);
+    }
+
+    .game {
+      width: min(760px, 100%);
+      padding: 24px;
+      border: 1px solid #345365;
+      border-radius: 20px;
+      background: #142235e8;
+      box-shadow: 0 20px 60px #0008;
+    }
+
+    header, .scoreboard, .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    h1 { margin: 0; font-size: clamp(1.6rem, 4vw, 2.4rem); }
+    .subtitle { color: #a9c2ce; margin: 6px 0 0; }
+    .score { font-size: 1.4rem; font-weight: 800; color: #facc15; }
+    .scoreboard { margin: 22px 0 16px; }
+    .scoreboard span { color: #a9c2ce; }
+    .settings { margin: 18px 0; }
+    .settings label { color: #a9c2ce; }
+    select {
+      margin-left: 8px;
+      padding: 8px;
+      border: 1px solid #547083;
+      border-radius: 8px;
+      color: #fff;
+      background: #294256;
+      font: inherit;
+    }
+
+    .pitch {
+      position: relative;
+      height: 260px;
+      overflow: hidden;
+      border: 8px solid #285d43;
+      border-radius: 14px;
+      background: linear-gradient(90deg, #2f7b50, #3e9760, #2f7b50);
+    }
+
+    .pitch::before {
+      content: "";
+      position: absolute;
+      inset: 36px 10%;
+      border: 2px solid #d5e8b3;
+      border-radius: 8px;
+      background: #bd9458;
+    }
+
+    .crease {
+      position: absolute;
+      top: 72px;
+      bottom: 72px;
+      width: 4px;
+      background: #fff;
+      z-index: 1;
+    }
+
+    .crease.left { left: 18%; }
+    .crease.right { right: 18%; }
+
+    .batter {
+      position: absolute;
+      right: 13%;
+      bottom: 72px;
+      z-index: 3;
+      font-size: 3rem;
+      transform: scaleX(-1);
+    }
+
+    .ball {
+      position: absolute;
+      left: 18%;
+      top: 50%;
+      z-index: 4;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #ef4444;
+      border: 3px solid #fecaca;
+      box-shadow: 0 0 14px #ef4444;
+      transform: translate(-50%, -50%);
+      transition: left var(--travel-time, 1.35s) linear;
+    }
+
+    .ball.moving { left: 82%; }
+    .pitch.hit .ball { background: #facc15; box-shadow: 0 0 22px #facc15; }
+
+    .message {
+      min-height: 28px;
+      margin: 18px 0 12px;
+      text-align: center;
+      color: #dbeafe;
+      font-weight: 700;
+    }
+
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 12px 18px;
+      color: #08111d;
+      background: #facc15;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button:hover { background: #fde047; }
+    button:disabled { cursor: not-allowed; opacity: .5; }
+    .secondary { color: #e2e8f0; background: #294256; }
+    .secondary:hover { background: #38556c; }
+    .hint { margin: 14px 0 0; text-align: center; color: #9fb3c1; font-size: .9rem; }
+    .actions { justify-content: center; margin-top: 12px; }
+    .result {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 12px;
+      text-align: center;
+      background: #20394c;
+    }
+    .result h2 { margin: 0 0 8px; color: #facc15; }
+    canvas { display: none; }
+
+    @media (max-width: 520px) {
+      .game { padding: 16px; }
+      .pitch { height: 220px; }
+      .batter { right: 8%; }
+      .crease.left { left: 12%; }
+      .crease.right { right: 12%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="game">
+    <header>
+      <div>
+        <h1>Six Ball Cricket</h1>
+        <p class="subtitle">Time your shot and chase the target.</p>
+      </div>
+      <div class="score" id="score">0 / 12</div>
+    </header>
+
+    <div class="settings">
+      <label for="difficulty">Difficulty:</label>
+      <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium" selected>Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+    </div>
+
+    <section class="scoreboard" aria-label="Match score">
+      <span id="runsNeeded">Runs needed: 12</span>
+      <span id="ballCount">Balls left: 6</span>
+      <span id="wickets">Wickets: 0</span>
+      <span id="bestScore">Best: 0</span>
+    </section>
+
+    <section class="pitch" id="pitch" aria-label="Cricket pitch">
+      <div class="crease left"></div>
+      <div class="crease right"></div>
+      <div class="batter" aria-hidden="true">🏏</div>
+      <div class="ball" id="ball" aria-hidden="true"></div>
+    </section>
+
+    <p class="message" id="message">Press Start, then hit when the ball reaches the batter.</p>
+    <div class="actions">
+      <button id="hitButton" disabled>Hit! (Space)</button>
+      <button class="secondary" id="startButton">Start innings</button>
+      <button class="secondary" id="saveButton" disabled>Save / share finish</button>
+    </div>
+    <p class="hint">Perfect timing = 6, slightly early or late = 4 or 1. A miss can be a dot ball or wicket.</p>
+    <section class="result" id="result">
+      <h2 id="resultTitle"></h2>
+      <p id="resultText"></p>
+      <button id="playAgainButton">Play again</button>
+    </section>
+    <canvas id="resultCanvas" width="1000" height="600"></canvas>
+  </main>
+
+  <script>
+    const totalBalls = 6;
+    const difficultySettings = {
+      easy: { target: 12, speed: 1700 },
+      medium: { target: 18, speed: 1350 },
+      hard: { target: 24, speed: 1000 }
+    };
+    const commentaries = {
+      six: "That's gone into the stands!",
+      four: "What a shot! Four runs!",
+      one: "Good running between the wickets.",
+      dot: "Beaten by the ball. Dot ball!",
+      wicket: "Clean bowled! That's a wicket!"
+    };
+    const ball = document.querySelector("#ball");
+    const pitch = document.querySelector("#pitch");
+    const scoreElement = document.querySelector("#score");
+    const runsNeededElement = document.querySelector("#runsNeeded");
+    const ballCountElement = document.querySelector("#ballCount");
+    const wicketsElement = document.querySelector("#wickets");
+    const bestElement = document.querySelector("#bestScore");
+    const messageElement = document.querySelector("#message");
+    const hitButton = document.querySelector("#hitButton");
+    const startButton = document.querySelector("#startButton");
+    const saveButton = document.querySelector("#saveButton");
+    const difficultyElement = document.querySelector("#difficulty");
+    const resultElement = document.querySelector("#result");
+    const resultTitleElement = document.querySelector("#resultTitle");
+    const resultTextElement = document.querySelector("#resultText");
+    const playAgainButton = document.querySelector("#playAgainButton");
+    const canvas = document.querySelector("#resultCanvas");
+
+    let score = 0;
+    let balls = 0;
+    let wickets = 0;
+    let target = 12;
+    let travelTime = 1350;
+    let running = false;
+    let ballStartedAt = 0;
+    let timer;
+    let best = JSON.parse(localStorage.getItem("sixBallBest") || '{"score":0,"difficulty":"medium"}');
+
+    bestElement.textContent = `Best: ${best.score} (${best.difficulty})`;
+
+    function updateScore() {
+      scoreElement.textContent = `${score} / ${target}`;
+      runsNeededElement.textContent = `Runs needed: ${Math.max(target - score, 0)}`;
+      ballCountElement.textContent = `Balls left: ${totalBalls - balls}`;
+      wicketsElement.textContent = `Wickets: ${wickets}`;
+    }
+
+    function startInnings() {
+      const settings = difficultySettings[difficultyElement.value];
+      clearTimeout(timer);
+      score = 0;
+      balls = 0;
+      wickets = 0;
+      target = settings.target;
+      travelTime = settings.speed;
+      running = true;
+      pitch.style.setProperty("--travel-time", `${travelTime}ms`);
+      resultElement.style.display = "none";
+      saveButton.disabled = true;
+      hitButton.disabled = false;
+      startButton.textContent = "Restart innings";
+      messageElement.textContent = "Watch the ball...";
+      updateScore();
+      bowl();
+    }
+
+    function bowl() {
+      if (!running || balls >= totalBalls) return;
+      balls += 1;
+      updateScore();
+      ball.classList.remove("moving");
+      ball.style.left = "18%";
+
+      requestAnimationFrame(() => {
+        if (!running) return;
+        ball.style.left = "";
+        ballStartedAt = performance.now();
+        ball.classList.add("moving");
+        timer = setTimeout(() => finishShot("miss"), travelTime + 100);
+      });
+    }
+
+    function hit() {
+      if (!running) return;
+      const elapsed = performance.now() - ballStartedAt;
+      if (elapsed < 100) return;
+      clearTimeout(timer);
+      const distanceFromIdeal = Math.abs(elapsed - travelTime);
+      const runs = distanceFromIdeal < 115 ? 6 : distanceFromIdeal < 280 ? 4 : 1;
+      finishShot("hit", runs);
+    }
+
+    function finishShot(type, runs = 0) {
+      if (!running) return;
+      running = false;
+      pitch.classList.toggle("hit", type === "hit");
+
+      if (type === "miss" && Math.random() < 0.35) {
+        wickets += 1;
+        messageElement.textContent = commentaries.wicket;
+      } else if (type === "miss") {
+        messageElement.textContent = commentaries.dot;
+      } else {
+        score += runs;
+        const key = runs === 6 ? "six" : runs === 4 ? "four" : "one";
+        messageElement.textContent = commentaries[key];
+      }
+
+      updateScore();
+      setTimeout(() => {
+        pitch.classList.remove("hit");
+        if (score >= target || balls >= totalBalls || wickets >= 2) {
+          endInnings();
+        } else {
+          running = true;
+          messageElement.textContent = "Next ball...";
+          bowl();
+        }
+      }, 700);
+    }
+
+    function endInnings() {
+      running = false;
+      hitButton.disabled = true;
+      saveButton.disabled = false;
+      const won = score >= target;
+      if (won && score > best.score) {
+        best = { score: score, difficulty: difficultyElement.value };
+        localStorage.setItem("sixBallBest", JSON.stringify(best));
+        bestElement.textContent = `Best: ${best.score} (${best.difficulty})`;
+      }
+      resultElement.style.display = "block";
+      resultTitleElement.textContent = won ? "You Win!" : "Innings Over";
+      resultTextElement.textContent = won
+        ? `You scored ${score} runs and reached the target of ${target}!`
+        : `You scored ${score}/${wickets}. You needed ${Math.max(target - score, 0)} more runs.`;
+      messageElement.textContent = won ? "Brilliant finish!" : "Good try! Play again.";
+    }
+
+    function saveFinish() {
+      const context = canvas.getContext("2d");
+      context.fillStyle = "#142235";
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.fillStyle = "#facc15";
+      context.font = "bold 58px system-ui";
+      context.fillText("SIX BALL CRICKET", 70, 105);
+      context.fillStyle = "#f8fafc";
+      context.font = "bold 100px system-ui";
+      context.fillText(`${score} / ${target}`, 70, 245);
+      context.font = "32px system-ui";
+      context.fillText(score >= target ? "Target reached!" : "Can you beat this score?", 75, 315);
+      context.fillStyle = "#3e9760";
+      context.fillRect(70, 370, 860, 100);
+      context.fillStyle = "#fff";
+      context.font = "bold 30px system-ui";
+      context.fillText("6 balls  •  Time your shot  •  Play again", 105, 432);
+      canvas.toBlob(async (blob) => {
+        if (!blob) return;
+        const file = new File([blob], "six-ball-cricket-finish.png", { type: "image/png" });
+        if (navigator.share && navigator.canShare?.({ files: [file] })) {
+          await navigator.share({ title: "My cricket finish", text: `I scored ${score} runs!`, files: [file] });
+        } else {
+          const link = document.createElement("a");
+          link.download = file.name;
+          link.href = URL.createObjectURL(blob);
+          link.click();
+          URL.revokeObjectURL(link.href);
+          messageElement.textContent = "Finish image downloaded. Share it with your friends!";
+        }
+      }, "image/png");
+    }
+
+    hitButton.addEventListener("click", hit);
+    startButton.addEventListener("click", startInnings);
+    playAgainButton.addEventListener("click", startInnings);
+    saveButton.addEventListener("click", saveFinish);
+    document.addEventListener("keydown", (event) => {
+      if (event.code === "Space") {
+        event.preventDefault();
+        hit();
+      }
+    });
+  </script>
+</body>
+</html>
