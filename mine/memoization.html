@@ -1,0 +1,42 @@
+<DOCTYPE! html>
+    <head>
+        <title>My Web Page</title>  
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">       
+    </head>
+    <body>
+        <script>
+         console.log("Closures - Memoization");
+
+function add(fn) {
+    let obj = {};
+
+    return function (x, y) {
+        let key = `${x},${y}`;
+
+        if (obj.hasOwnProperty(key)) {
+            console.log("From Cache");
+            return obj[key];
+        }
+
+        console.log("Calculated");
+        let res = fn(x, y);
+        obj[key] = res;
+        return res;
+    };
+}
+
+const myadd = add((a, b) => {
+    return a + b;
+});
+
+console.log(myadd(2, 3)); // Calculated
+console.log(myadd(2, 3)); // From Cache
+console.log(myadd(5, 7)); // Calculated
+console.log(myadd(5, 7)); // From Cache
+        </script>
+        
+        
+
+</DOCTYPE>
